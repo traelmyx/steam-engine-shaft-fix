@@ -121,6 +121,8 @@ jar {
 }
 
 dependencies {
+    compileOnly fileTree(createNested) { include '*.jar' }
     gametestCompileOnly fileTree(createNested) { include '*.jar' }
 }
 tasks.named('compileGametestJava') { dependsOn unpackCreateDeps }
+tasks.named('compileJava') { dependsOn unpackCreateDeps }
