@@ -1,0 +1,18 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
+
+[[mods]]
+modId = "${id}_gametest"
+version = "${version}"
+displayName = "Steam Engine Shaft Fix Tests"
+
+[[dependencies.${id}_gametest]]
+modId = "${id}"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "steam_shaft_fix_gametest.mixins.json"
