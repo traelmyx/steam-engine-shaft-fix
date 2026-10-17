@@ -133,10 +133,10 @@ public class SteamTests {
 			helper.assertTrue(broken > 0 || reversals > 0, "nothing broke and nothing reversed without the fix: the bug did not reproduce"));
 	}
 
-	/** Heat on and off every 2 seconds: the engines still start, run at full speed and stop. */
+	/** Heat on and off every 2 seconds, ending with it off: the engines still start, run at full speed and stop. */
 	@GameTest(template = "empty", timeoutTicks = 500, batch = "on_off")
 	public static void onOffCyclesStillWork(GameTestHelper helper) {
-		run(helper, "on/off cycles", true, 400, t -> t < 10 ? 0f : ((t / 40) % 2 == 0 ? 1f : 0f), (reversals, broken, fastest) -> {
+		run(helper, "on/off cycles", true, 390, t -> t < 10 ? 0f : ((t / 40) % 2 == 0 ? 1f : 0f), (reversals, broken, fastest) -> {
 			helper.assertTrue(fastest == 64, "top speed " + fastest + " rpm, expected 64");
 			helper.assertTrue(broken == 0 && reversals == 0, broken + " blocks broke and the network reversed " + reversals + " times");
 			helper.assertTrue(speed(helper) == 0, "the network still turns with the boiler off");
